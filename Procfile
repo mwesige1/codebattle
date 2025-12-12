@@ -1,1 +1,1 @@
-web: python3 mange.py migrate && gunicorn codebattle.wsgi
+web: python3 manage.py migrate && gunicorn codebattle.wsgi
