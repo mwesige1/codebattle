@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="account-container">
+
+    <h1 class="page-title">Account</h1>
+
+    <div class="account-card">
+        <h2 class="section-title">Profile Info</h2>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+
+    <div class="account-card">
+        <h2 class="section-title">My Events</h2>
+
+        {% if user.events.all %}
+            <ul class="list">
+                {% for event in user.events.all %}
+                    <li>
+                        <a href="{% url 'event' event.id %}">
+                            {{ event.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty-text">You haven’t joined any events yet.</p>
+        {% endif %}
+    </div>
+
+    <div class="account-card">
+        <h2 class="section-title">My Submissions</h2>
+
+        {% if user.submission.all %}
+            <ul class="list">
+                {% for sub in user.submission.all %}
+                    <li>
+                        <a href="{% url 'update_submission' sub.id %}">
+                            {{ sub.event.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="empty-text">You haven’t submitted anything yet.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <h1 class="page-title">Profile</h1>
+
+    <div class="account-card">
+        <h2 class="section-title">User Information</h2>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <!-- Optional: add profile image, phone, or bio -->
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- Page Title -->
+    <h1 class="page-title">Home</h1>
+
+    <!-- Users Section -->
+    <section class="section-card">
+        <h2 class="section-title">Users</h2>
+
+        <div class="user-list">
+            {% for user in users %}
+                <div class="user-item">
+                    {{ user.name }}
+                </div>
+            {% empty %}
+                <p class="info-text">No users found.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="section-card">
+        <h2 class="section-title">Events</h2>
+
+        <div class="event-list">
+            {% for event in events %}
+                <a href="{% url 'event' event.id %}" class="event-card">
+                    <h3>{{ event.name }}</h3>
+                    <p class="text-muted">{{ event.description|truncatewords:15 }}</p>
+                </a>
+            {% empty %}
+                <p class="info-text">No events available.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}

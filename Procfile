@@ -1,0 +1,1 @@
+web: python3 mange.py migrate && gunicorn codebattle.wsgi

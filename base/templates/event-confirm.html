@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="section-card confirm-card">
+        <h1 class="page-title">Confirm Action</h1>
+
+        <form action="" method="post" class="form-card">
+            {% csrf_token %}
+
+            <div class="form-actions">
+                <a href="{% url 'home' %}" class="btn-secondary">Go Back</a>
+                <button type="submit" class="btn-primary">Confirm</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container page-section">
+
+    <h1 class="page-title">{{ event.name }}</h1>
+
+    <p class="description-text">{{ event.description }}</p>
+
+    <!-- Registration -->
+    <div class="section-card">
+        {% if registered %}
+            <p class="info-text success-text">You already registered for this event.</p>
+        {% else %}
+            <a class="btn-primary" href="{% url 'event_register' event.id %}">
+                Register for the Event
+            </a>
+        {% endif %}
+    </div>
+
+    <!-- Submission -->
+    <div class="section-card">
+        {% if submitted %}
+            <p class="info-text warning-text">You have already submitted your project.</p>
+        {% else %}
+            <a class="btn-secondary" href="{% url 'project_submit' event.id %}">
+                Submit Your Project
+            </a>
+        {% endif %}
+    </div>
+
+    <!-- Participants -->
+    <div class="section-card">
+        <h2 class="section-title">Registered Users</h2>
+        <div class="user-list">
+            {% for user in event.participants.all %}
+                <a class="user-item" href="{% url 'user_profile' user.id %}">
+                    {{ user }}
+                </a>
+            {% empty %}
+                <p>No participants yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
